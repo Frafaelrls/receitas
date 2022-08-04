@@ -63,6 +63,7 @@ coverage.xml
 *.pot
 
 # Django stuff:
+alurareceita/settings.py
 receitas/migrations
 *.log
 local_settings.py
