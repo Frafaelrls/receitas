@@ -22,6 +22,8 @@ Carga horária: 8 Horas
 ### Tecnologias utilizadas 🔧
 <br>
 
+🐍 [Python](https://www.python.org/)
+
 🤠 [Django](https://www.djangoproject.com/)
 
 💽 [VsCode](https://code.visualstudio.com/)
