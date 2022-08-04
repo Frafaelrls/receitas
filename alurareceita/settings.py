@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
-from database import DATABASES
+from .database import PSW
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'alurareceita.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = DATABASES
+DATABASES = PSW
 
 
 # Password validation
@@ -106,7 +106,10 @@ TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
-USE_TZ = True
+# A linha a seguir foi retirada para remover o erro "AssertionError: database connection isn't set to UTC" 
+# Segundo consta esse erro é provocado devido a erro interno nas versões novas das bibliotecas psycopg2 e psycopg2-binary-2.9.3
+# Outro ponto a verificar, atualizar o Django para a versão mais nova e verificar se o erro continua
+#USE_TZ = True 
 
 
 # Static files (CSS, JavaScript, Images)
