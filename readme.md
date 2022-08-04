@@ -41,4 +41,3 @@ Estudando com amor 💝 e com carinho 😊
 Felippe Rafael
 
 [![Linkedin Badge](https://img.shields.io/badge/-Felippe-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/felippe-rafael/)]( https://www.linkedin.com/in/felippe-rafael/)
-[![gmail Badge](https://img.shields.io/badge/-frafaelrls@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:frafaelrls@gmail.com)](mailto:frafealrls@gmail.com)
