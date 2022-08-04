@@ -1,4 +1,3 @@
-import re
 from django.shortcuts import render
 
 def index(request):  # Verificar como que é utilizado, no método indica o uso de um parâmetro o rquest, mas seu uso não adiciona o parâmetro aparente menete, no arquivo url.py
@@ -7,7 +6,7 @@ def index(request):  # Verificar como que é utilizado, no método indica o uso 
         1:'Lasanha',
         2:'Sopa de legumes',
         3:'Sorvete',
-        4: 'Bolo de chocolate'
+        4:'Bolo de chocolate'
     }
     
     dados = {
