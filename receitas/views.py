@@ -3,7 +3,7 @@ from .models import Receita
 
 def index(request):  # Verificar como que é utilizado, no método indica o uso de um parâmetro o rquest, mas seu uso não adiciona o parâmetro aparente menete, no arquivo url.py
     
-    receita = Receita.objects.all()
+    receita = Receita.objects.filter(puplicada=True)
     
     dados = {
         'receitas' : receita
