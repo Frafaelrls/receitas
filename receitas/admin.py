@@ -10,9 +10,8 @@ class ListandoReceitas(admin.ModelAdmin):
     list_display_links: list|tuple = ('id','nome_receita')
     # Tupla de quais colunas serão editaveis
     list_editable = ('puplicada',)
-
     # Limite por página
-    list_per_page: int = 2
+    list_per_page: int = 5
     # Filtro
     list_filter: list|tuple = ('categoria',)
     # Campo de busca
