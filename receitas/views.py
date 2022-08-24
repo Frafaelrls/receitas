@@ -3,7 +3,7 @@ from .models import Receita
 
 def index(request):  # Verificar como que é utilizado, no método indica o uso de um parâmetro o rquest, mas seu uso não adiciona o parâmetro aparente menete, no arquivo url.py
     
-    receita = Receita.objects.order_by('-date_receita').filter(puplicada=True)
+    receita = Receita.objects.order_by('-date_receita').filter(publicada=True)
     
     dados = {
         'receitas' : receita
@@ -21,7 +21,7 @@ def receita(request, receita_id):
     return render(request, 'receita.html', receita_a_exibir)
 
 def buscar(request):
-    lista_receita = Receita.objects.order_by('-date_receita').filter(puplicada=True)
+    lista_receita = Receita.objects.order_by('-date_receita').filter(publicada=True)
 
     if 'buscar' in request.GET:
         nome_a_buscar = request.GET['buscar']

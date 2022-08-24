@@ -12,4 +12,4 @@ class Receita(models.Model):
     categoria = models.CharField(max_length=100)
     date_receita = models.DateTimeField(default=datetime.now, blank=True)
     foto_receita = models.ImageField(upload_to='fotos/%d/%m/%Y', blank=True)
-    puplicada = models.BooleanField(default=False)
+    publicada = models.BooleanField(default=False)

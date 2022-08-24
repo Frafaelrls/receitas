@@ -5,11 +5,11 @@ from .models import Receita
 # Classe para manupular a exibição no modo adimin das receitas criadas
 class ListandoReceitas(admin.ModelAdmin):
     # Tupla de quais colunas devem aparecer no editar receitas
-    list_display: list|tuple = ('id', 'nome_receita', 'categoria', 'tempo_preparo', 'puplicada')
+    list_display: list|tuple = ('id', 'nome_receita', 'categoria', 'tempo_preparo', 'publicada')
     # Tupla de quais colunas possuirão links
     list_display_links: list|tuple = ('id','nome_receita')
     # Tupla de quais colunas serão editaveis
-    list_editable = ('puplicada',)
+    list_editable = ('publicada',)
     # Limite por página
     list_per_page: int = 5
     # Filtro
