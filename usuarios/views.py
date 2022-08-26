@@ -1,10 +1,10 @@
 from django.shortcuts import render
 
 def cadastro(request):
-    pass
+    return render(request, 'usuarios/cadastro.html')
 
 def login(request):
-    pass
+    return render(request, 'usuarios/login.html' )
 
 def logout(request):
     pass
