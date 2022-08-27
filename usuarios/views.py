@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.contrib import auth
 
 def cadastro(request):
     if request.method == 'POST':
@@ -34,10 +35,14 @@ def login(request):
     if request.method == 'POST':
         email = request.POST['email']
         senha = request.POST['senha']
+
         if email == '' or senha == '':
             print('Os campos email e senha não podem ficar em branco')
             return redirect('login')
         print(email, senha)
+        if User.objects.filter(email=email).exists():
+            nome = User.objects.filter(email=email).values_list('username', flat=True).get()  
+            print(nome)                     
         return redirect('dashboard')
         
     return render(request, 'usuarios/login.html' )
