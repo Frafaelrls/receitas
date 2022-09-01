@@ -12,25 +12,23 @@ def cadastro(request):
         senha2 = request.POST['password2']
 
         if not nome.strip():
-            print('O campo nome não pode ficar em branco')
+            messages.error(request, 'O campo nome não pode ficar em branco')
             return redirect('cadastro')
 
         if not email.strip():
-            print('O campo email não pode ficar em branco')
+            messages.error(request, 'O campo email não pode ficar em branco')
             return redirect('cadastro')
 
         if senha != senha2:
             messages.error(request, 'As senhas não são iguais')
-            print('As senhas não são iguais')
             return redirect('cadastro')
 
         if User.objects.filter(email=email).exists():
-            print('Usuário já cadastrado')
+            messages.error(request, 'Usuário já cadastrado')
             return redirect('cadastro')
         user = User.objects.create_user(username=nome, email=email, password=senha)
         user.save()
-        messages.error(request, 'Usuário cadastrado com sucesso')
-        print('Usuário cadastrado com sucesso')
+        messages.success(request, 'Usuário cadastrado com sucesso')
         return redirect('login')
     else:
         return render(request, 'usuarios/cadastro.html')
@@ -41,7 +39,7 @@ def login(request):
         senha = request.POST['senha']
 
         if email == '' or senha == '':
-            print('Os campos email e senha não podem ficar em branco')
+            messages.error(request, 'O campo email não pode ficar em branco')
             return redirect('login')
         print(email, senha)
         if User.objects.filter(email=email).exists():
@@ -50,7 +48,6 @@ def login(request):
             if user is not None:
                 auth.login(request, user)
                 messages.success(request, 'Login realizado com sucesso')
-                print('Login realizado com sucesso')
                 return redirect('dashboard')
         
     return render(request, 'usuarios/login.html' )
@@ -83,6 +80,8 @@ def cria_receita(request):
         user = get_object_or_404(User, pk=request.user.id)
         receita = Receita.objects.create(pessoa=user, nome_receita=nome_receita, ingredientes=ingredientes, modo_preparo=modo_preparo,tempo_preparo=tempo_preparo, rendimento=rendimento, categoria=categoria, foto_receita=foto_receita)
         receita.save()
+        messages.success(request, 'Receita salva com sucesso')
         return redirect('dashboard')
     else:
+        messages.error(request, 'A receita não foi salva')
         return render(request, 'usuarios/cria_receita.html')
