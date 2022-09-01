@@ -1,7 +1,7 @@
 from platform import processor
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
-from django.contrib import auth
+from django.contrib import auth, messages
 from receitas.models import Receita
 
 def cadastro(request):
@@ -20,6 +20,7 @@ def cadastro(request):
             return redirect('cadastro')
 
         if senha != senha2:
+            messages.error(request, 'As senhas não são iguais')
             print('As senhas não são iguais')
             return redirect('cadastro')
 
@@ -28,6 +29,7 @@ def cadastro(request):
             return redirect('cadastro')
         user = User.objects.create_user(username=nome, email=email, password=senha)
         user.save()
+        messages.error(request, 'Usuário cadastrado com sucesso')
         print('Usuário cadastrado com sucesso')
         return redirect('login')
     else:
@@ -47,6 +49,7 @@ def login(request):
             user = auth.authenticate(request, username=nome, password=senha )   
             if user is not None:
                 auth.login(request, user)
+                messages.success(request, 'Login realizado com sucesso')
                 print('Login realizado com sucesso')
                 return redirect('dashboard')
         
