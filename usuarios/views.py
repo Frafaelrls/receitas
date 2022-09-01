@@ -42,8 +42,11 @@ def login(request):
         print(email, senha)
         if User.objects.filter(email=email).exists():
             nome = User.objects.filter(email=email).values_list('username', flat=True).get()  
-            print(nome)                     
-        return redirect('dashboard')
+            user = auth.authenticate(request, username=nome, password=senha )   
+            if user is not None:
+                auth.login(request, user)
+                print('Login realizado com sucesso')
+                return redirect('dashboard')
         
     return render(request, 'usuarios/login.html' )
 
