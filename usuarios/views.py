@@ -96,7 +96,9 @@ def deleta_receita(request, receita_id):
     return redirect('dashboard')
 
 def campo_vazio(campo):
-    return campo.strip()
+    if campo.strip():
+        return False
+    return True
 
 def senhas_nao_sao_iguais(senha, senha2):
     return senha != senha2
