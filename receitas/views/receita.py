@@ -2,13 +2,17 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from receitas.models import Receita
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-def index(request):  # Verificar como que é utilizado, no método indica o uso de um parâmetro o rquest, mas seu uso não adiciona o parâmetro aparente menete, no arquivo url.py
+def index(request):
     
     receita = Receita.objects.order_by('-date_receita').filter(publicada=True)
-    
+    paginator = Paginator(receita, 3)
+    page = request.GET.get('page')
+    receitas_por_pagina = paginator.get_page(page)
+
     dados = {
-        'receitas' : receita
+        'receitas' : receitas_por_pagina
     }
 
     return render(request, 'receitas/index.html', dados)
